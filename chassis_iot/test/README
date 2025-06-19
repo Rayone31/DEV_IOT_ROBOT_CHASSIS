@@ -1,11 +1,86 @@
+# Projet Châssis Robot IoT – ESP32
 
-This directory is intended for PlatformIO Test Runner and project tests.
+## Description
 
-Unit Testing is a software testing method by which individual units of
-source code, sets of one or more MCU program modules together with associated
-control data, usage procedures, and operating procedures, are tested to
-determine whether they are fit for use. Unit testing finds problems early
-in the development cycle.
+Ce projet permet de piloter un robot à châssis motorisé via Bluetooth Low Energy (BLE) avec une carte ESP32.  
+Les commandes sont envoyées depuis un smartphone ou un ordinateur compatible BLE.
 
-More information about PlatformIO Unit Testing:
-- https://docs.platformio.org/en/latest/advanced/unit-testing/index.html
+---
+
+## Organisation du projet
+
+```
+chassis_iot/
+├── src/
+│   ├── main.cpp           # Point d'entrée du programme
+│   ├── moteurs.cpp        # Fonctions de contrôle des moteurs
+│   ├── moteurs.h
+│   ├── bluetooth.cpp      # Gestion du Bluetooth BLE
+│   └── bluetooth.h
+├── platformio.ini         # Configuration PlatformIO
+└── test/
+    └── README             # Ce fichier
+```
+
+---
+
+## Fonctionnalités
+
+- Contrôle des moteurs (avancer, reculer, gauche, droite, stop)
+- Réception de commandes via BLE
+- Affichage dans le Serial Monitor lors de la connexion/déconnexion BLE
+- Code organisé en plusieurs fichiers pour plus de clarté
+
+---
+
+## Commandes Bluetooth
+
+Envoyez une lettre via BLE pour contrôler le robot :
+
+| Commande | Action    |
+|----------|-----------|
+| a        | Avancer   |
+| r        | Reculer   |
+| g        | Gauche    |
+| d        | Droite    |
+| s        | Stop      |
+
+---
+
+## Utilisation
+
+1. **Branchez l’ESP32** sur votre PC.
+2. **Ouvrez le projet** dans VS Code avec PlatformIO.
+3. **Compilez et téléversez** le code sur l’ESP32.
+4. **Ouvrez le Serial Monitor** (9600 bauds).
+5. **Connectez-vous en BLE** avec une application comme [nRF Connect](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp) ou [LightBlue](https://apps.apple.com/fr/app/lightblue/id557428110).
+6. **Envoyez les commandes** (a, r, g, d, s) via la caractéristique BLE.
+
+---
+
+## Dépendances
+
+- [PlatformIO](https://platformio.org/)
+- Framework ESP32 Arduino (installé automatiquement par PlatformIO)
+
+---
+
+## Schéma de câblage
+
+- IN1 : GPIO 19
+- IN2 : GPIO 18
+- IN3 : GPIO 32
+- IN4 : GPIO 33
+
+---
+
+## Auteurs
+
+- Dylan Hebrard(Ynov B2 – Projet Fil Rouge WEB)
+- Alexandre Echazarreta  (Ynov B2 – Projet Fil Rouge WEB)
+
+---
+
+## Licence
+
+Projet à usage pédagogique.
